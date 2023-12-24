@@ -1,0 +1,10 @@
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\bin\Debug\Robot Arm.exe.config
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\bin\Debug\Robot Arm.exe
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\bin\Debug\Robot Arm.pdb
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\obj\Debug\Robot Arm.csproj.AssemblyReference.cache
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\obj\Debug\Robot_Arm.Properties.Resources.resources
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\obj\Debug\Robot Arm.csproj.GenerateResource.cache
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\obj\Debug\Robot Arm.csproj.CoreCompileInputs.cache
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\obj\Debug\Robot Arm.exe
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\obj\Debug\Robot Arm.pdb
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\Robot Arm\Robot Arm\obj\Debug\Robot_Arm.Form1.resources

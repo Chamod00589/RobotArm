@@ -63,6 +63,10 @@ void setup() {
   analogWrite(leftBackward, 0);
 }
 
+String RecievedMsg = "";
+String Key = "";
+String Value = "";
+
 
 void loop() {
 
@@ -90,6 +94,38 @@ void loop() {
   // handDown();
 
   // getDistance();
+
+
+  if (Serial.available()) {
+    RecievedMsg = Serial.readStringUntil('\n');
+    if (RecievedMsg.length() > 0) {
+      if (RecievedMsg.indexOf(':') != -1) {
+        // colon exists in the string
+        int separatorIndex = RecievedMsg.indexOf(':');
+        Key = RecievedMsg.substring(0, separatorIndex);
+        Value = RecievedMsg.substring(separatorIndex + 1);
+        // if (SerialPrint == true) {
+        // Serial.println(RecievedMsg);
+        Serial.println("Key:" + Key);
+        Serial.println("Value:" + Value);
+        // }
+      }
+    }
+
+    // SerialReciverdString = "";
+    if (Key == "Oil Type") {
+
+      // BuzzerBeep(100, 1);
+      // // SelectedOilType = Value;
+      // if (Value.toInt() == 1) {
+      //   SelectOilType(OilType1);
+      // } else if (Value.toInt() == 2) {
+      //   SelectOilType(OilType2);
+      // } else if (Value.toInt() == 3) {
+      //   SelectOilType(OilType3);
+      // }
+    }
+  }
   ReadJoystic();
   // delay(400);
 
@@ -163,10 +199,10 @@ void getDistance() {
   // Calculate the distance in centimeters
   distance = duration * 0.034 / 2;
 
-  // Print the distance to the serial monitor
-  Serial.print("Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
+  // // Print the distance to the serial monitor
+  // Serial.print("Distance: ");
+  // Serial.print(distance);
+  // Serial.println(" cm");
 
   // Add a delay before the next measurement
   delay(100);
@@ -183,24 +219,24 @@ void ReadJoystic() {
 
 
   // Print the values to the serial monitor
-  Serial.print("X: ");
-  Serial.print(xValue);
-  Serial.print("\tY: ");
-  Serial.print(yValue);
-  Serial.print("\tSwitch: ");
-  Serial.println(swState);
+  // Serial.print("X: ");
+  // Serial.print(xValue);
+  // Serial.print("\tY: ");
+  // Serial.print(yValue);
+  // Serial.print("\tSwitch: ");
+  // Serial.println(swState);
   if (swState == 0) {
     ArmMode = !ArmMode;
     if (ArmMode) {
-      leftHandServo.attach(leftHandPin);
-      rightHandServo.attach(rightHandPin);
-      bendServo.attach(bendPin);
+      // leftHandServo.attach(leftHandPin);
+      // rightHandServo.attach(rightHandPin);
+      // bendServo.attach(bendPin);
+      Serial.println("Arm Mode");
     } else {
+      Serial.println("Drive Mode");
       // leftHandServo.detach();
       // rightHandServo.detach();
       // bendServo.detach();
-
-  
     }
     delay(1000);
   }
