@@ -44,10 +44,46 @@ namespace Serial
 
         #region Delegates
         public delegate void UPDATE_OUTPUT_TEXT(String Str);
-        public void UpdateOutputText(String Str)
+        public  void  UpdateOutputText(String Str)
         {
+
+
+            string receivedMsg = Str;
+
+            if (receivedMsg.Length > 0)
+            {
+                int colonIndex = receivedMsg.IndexOf(':');
+                if (colonIndex != -1)
+                {
+                    // Colon exists in the string
+                    string key = receivedMsg.Substring(0, colonIndex);
+                    string value = receivedMsg.Substring(colonIndex + 1);
+
+                    // Uncomment the lines below if you want to print the values to the console
+                    // Console.WriteLine(receivedMsg);
+                    Console.WriteLine("Key: " + key);
+                    Console.WriteLine("Value: " + value);
+
+
+                    if (int.TryParse(value, out int number))
+                    {
+                        Console.WriteLine("Parsed Number: " + number);
+                        if (number >= 3  && number <= 20)
+                        {
+                            progressBar1.Value = 23 - number;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Number Format");
+                    }
+
+                }
+            } 
+
             tboxReceive.Text += Str;
             tboxReceive.ScrollToCaret();
+
         }
         #endregion
 
@@ -55,9 +91,11 @@ namespace Serial
         #region Handlers
         void SerialOnReceivedHandler(object sender, SerialDataReceivedEventArgs e)
         {
-            String str = Serial.ReadExisting();
-            
+           String str = Serial.ReadExisting();
            Invoke(new UPDATE_OUTPUT_TEXT(UpdateOutputText), str);
+
+
+           
         }
         #endregion
 
@@ -166,6 +204,40 @@ namespace Serial
                 if(true == Serial.IsOpen)
                 {
                     Serial.Write(tboxData.Text);
+                }
+                else
+                {
+                    MessageBox.Show("COM Port is not Opened");
+                }
+            }
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            label1.Text = trackBar1.Value.ToString();
+
+            if (null != Serial)
+            {
+                if (true == Serial.IsOpen)
+                {
+                    Serial.WriteLine("Hand:"+ trackBar1.Value.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("COM Port is not Opened");
+                }
+            }
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            label1.Text = trackBar1.Value.ToString();
+
+            if (null != Serial)
+            {
+                if (true == Serial.IsOpen)
+                {
+                    Serial.WriteLine("Bend:" + trackBar2.Value.ToString());
                 }
                 else
                 {

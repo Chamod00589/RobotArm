@@ -113,22 +113,29 @@ void loop() {
     }
 
     // SerialReciverdString = "";
-    if (Key == "Oil Type") {
+    if (Key == "Hand") {
 
-      // BuzzerBeep(100, 1);
-      // // SelectedOilType = Value;
-      // if (Value.toInt() == 1) {
-      //   SelectOilType(OilType1);
-      // } else if (Value.toInt() == 2) {
-      //   SelectOilType(OilType2);
-      // } else if (Value.toInt() == 3) {
-      //   SelectOilType(OilType3);
-      // }
+      int i = Value.toInt();
+
+
+      leftHandServoPosition = 130 - i;
+      rightHandServoPosition = i;
+      leftHandServo.write(leftHandServoPosition);
+      rightHandServo.write(rightHandServoPosition);
+      delay(25);
+    }
+    if (Key == "Bend") {
+
+      int i = Value.toInt();
+
+      bendServoPosition = i;
+      bendServo.write(bendServoPosition);
+      delay(60);
     }
   }
   ReadJoystic();
-  // delay(400);
-
+  
+  getDistance();
 
   // analogWrite(rightForward, 0);
   // analogWrite(leftForward, 0);
@@ -200,12 +207,12 @@ void getDistance() {
   distance = duration * 0.034 / 2;
 
   // // Print the distance to the serial monitor
-  // Serial.print("Distance: ");
-  // Serial.print(distance);
+  Serial.print("Distance: ");
+  Serial.println(distance);
   // Serial.println(" cm");
 
   // Add a delay before the next measurement
-  delay(100);
+  // delay(100);
 }
 
 
@@ -238,7 +245,7 @@ void ReadJoystic() {
       // rightHandServo.detach();
       // bendServo.detach();
     }
-    delay(1000);
+    delay(600);
   }
   if (ArmMode) {
 
@@ -250,6 +257,7 @@ void ReadJoystic() {
         rightHandServoPosition = 130 - i;
         leftHandServo.write(leftHandServoPosition);
         rightHandServo.write(rightHandServoPosition);
+        delay(25);
       }
     }
     if (yValue > 600) {
@@ -260,6 +268,7 @@ void ReadJoystic() {
         rightHandServoPosition = 130 - i;
         leftHandServo.write(leftHandServoPosition);
         rightHandServo.write(rightHandServoPosition);
+        delay(25);
       }
     }
     if (xValue < 400) {
