@@ -1,0 +1,17 @@
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\bin\Debug\Washing machine.exe.config
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\bin\Debug\Washing machine.exe
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\bin\Debug\Washing machine.pdb
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\bin\Debug\Guna.UI.dll
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\bin\Debug\Interop.WMPLib.dll
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing machine.csproj.AssemblyReference.cache
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Interop.WMPLib.dll
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing machine.csproj.ResolveComReference.cache
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing_machine.Form1.resources
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing_machine.Properties.Resources.resources
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing machine.csproj.GenerateResource.cache
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing machine.csproj.CoreCompileInputs.cache
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing machine.csproj.CopyComplete
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing machine.exe
+C:\Users\Chamod\Desktop\Projects\7 Arduino robo Arm\C# UI\Washing machine\Washing machine\obj\Debug\Washing machine.pdb
