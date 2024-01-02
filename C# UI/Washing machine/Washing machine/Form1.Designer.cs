@@ -47,9 +47,18 @@ namespace Washing_machine
             this.label4 = new System.Windows.Forms.Label();
             this.WashingStartLED = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.tboxReceive = new System.Windows.Forms.TextBox();
             this.sp = new System.IO.Ports.SerialPort(this.components);
+            this.WaterLevelProgress = new Guna.UI.WinForms.GunaVProgressBar();
+            this.WaterLevel = new System.Windows.Forms.Label();
+            this.ManulModePanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TimerVTrackBar = new Guna.UI.WinForms.GunaVTrackBar();
+            this.label7 = new System.Windows.Forms.Label();
+            this.WaterLevelVTrackBar = new Guna.UI.WinForms.GunaVTrackBar();
+            this.StartBtn = new Guna.UI.WinForms.GunaCircleButton();
+            this.tboxReceive = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            this.ManulModePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // axWindowsMediaPlayer1
@@ -99,7 +108,7 @@ namespace Washing_machine
             // WaterPumpLED
             // 
             this.WaterPumpLED.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
-            this.WaterPumpLED.Location = new System.Drawing.Point(990, 248);
+            this.WaterPumpLED.Location = new System.Drawing.Point(1021, 94);
             this.WaterPumpLED.Name = "WaterPumpLED";
             this.WaterPumpLED.Size = new System.Drawing.Size(34, 34);
             this.WaterPumpLED.TabIndex = 8;
@@ -107,7 +116,7 @@ namespace Washing_machine
             // WashingMotorLED
             // 
             this.WashingMotorLED.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
-            this.WashingMotorLED.Location = new System.Drawing.Point(990, 293);
+            this.WashingMotorLED.Location = new System.Drawing.Point(1021, 139);
             this.WashingMotorLED.Name = "WashingMotorLED";
             this.WashingMotorLED.Size = new System.Drawing.Size(34, 34);
             this.WashingMotorLED.TabIndex = 8;
@@ -137,7 +146,7 @@ namespace Washing_machine
             this.WaterPumpCheckBox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.WaterPumpCheckBox.FillColor = System.Drawing.Color.White;
             this.WaterPumpCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WaterPumpCheckBox.Location = new System.Drawing.Point(842, 254);
+            this.WaterPumpCheckBox.Location = new System.Drawing.Point(873, 100);
             this.WaterPumpCheckBox.Name = "WaterPumpCheckBox";
             this.WaterPumpCheckBox.Size = new System.Drawing.Size(123, 22);
             this.WaterPumpCheckBox.TabIndex = 13;
@@ -151,7 +160,7 @@ namespace Washing_machine
             this.WashingMotorCheckBox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.WashingMotorCheckBox.FillColor = System.Drawing.Color.White;
             this.WashingMotorCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WashingMotorCheckBox.Location = new System.Drawing.Point(843, 300);
+            this.WashingMotorCheckBox.Location = new System.Drawing.Point(874, 146);
             this.WashingMotorCheckBox.Name = "WashingMotorCheckBox";
             this.WashingMotorCheckBox.Size = new System.Drawing.Size(142, 22);
             this.WashingMotorCheckBox.TabIndex = 14;
@@ -160,7 +169,7 @@ namespace Washing_machine
             // 
             // panel5
             // 
-            this.panel5.Location = new System.Drawing.Point(79, 569);
+            this.panel5.Location = new System.Drawing.Point(79, 554);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(694, 74);
             this.panel5.TabIndex = 15;
@@ -168,7 +177,7 @@ namespace Washing_machine
             // ManualModeLED
             // 
             this.ManualModeLED.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(255)))), ((int)(((byte)(220)))));
-            this.ManualModeLED.Location = new System.Drawing.Point(990, 200);
+            this.ManualModeLED.Location = new System.Drawing.Point(1021, 46);
             this.ManualModeLED.Name = "ManualModeLED";
             this.ManualModeLED.Size = new System.Drawing.Size(34, 34);
             this.ManualModeLED.TabIndex = 10;
@@ -180,7 +189,7 @@ namespace Washing_machine
             this.ManualModeCheckBox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.ManualModeCheckBox.FillColor = System.Drawing.Color.White;
             this.ManualModeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManualModeCheckBox.Location = new System.Drawing.Point(842, 208);
+            this.ManualModeCheckBox.Location = new System.Drawing.Point(873, 54);
             this.ManualModeCheckBox.Name = "ManualModeCheckBox";
             this.ManualModeCheckBox.Size = new System.Drawing.Size(131, 22);
             this.ManualModeCheckBox.TabIndex = 12;
@@ -215,24 +224,138 @@ namespace Washing_machine
             this.label5.TabIndex = 16;
             this.label5.Text = "Start";
             // 
-            // tboxReceive
-            // 
-            this.tboxReceive.Location = new System.Drawing.Point(825, 53);
-            this.tboxReceive.Multiline = true;
-            this.tboxReceive.Name = "tboxReceive";
-            this.tboxReceive.Size = new System.Drawing.Size(272, 107);
-            this.tboxReceive.TabIndex = 17;
-            // 
             // sp
             // 
             this.sp.PortName = "COM7";
             this.sp.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.sp_DataReceived);
+            // 
+            // WaterLevelProgress
+            // 
+            this.WaterLevelProgress.BorderColor = System.Drawing.Color.Black;
+            this.WaterLevelProgress.ColorStyle = Guna.UI.WinForms.ColorStyle.Default;
+            this.WaterLevelProgress.IdleColor = System.Drawing.Color.Gainsboro;
+            this.WaterLevelProgress.Location = new System.Drawing.Point(855, 372);
+            this.WaterLevelProgress.Maximum = 11;
+            this.WaterLevelProgress.Minimum = 1;
+            this.WaterLevelProgress.Name = "WaterLevelProgress";
+            this.WaterLevelProgress.ProgressMaxColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.WaterLevelProgress.ProgressMinColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.WaterLevelProgress.Size = new System.Drawing.Size(43, 134);
+            this.WaterLevelProgress.TabIndex = 18;
+            this.WaterLevelProgress.Value = 1;
+            // 
+            // WaterLevel
+            // 
+            this.WaterLevel.AutoSize = true;
+            this.WaterLevel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WaterLevel.Location = new System.Drawing.Point(811, 509);
+            this.WaterLevel.Name = "WaterLevel";
+            this.WaterLevel.Size = new System.Drawing.Size(128, 26);
+            this.WaterLevel.TabIndex = 19;
+            this.WaterLevel.Text = "Water Level";
+            // 
+            // ManulModePanel
+            // 
+            this.ManulModePanel.Controls.Add(this.StartBtn);
+            this.ManulModePanel.Controls.Add(this.WaterLevelVTrackBar);
+            this.ManulModePanel.Controls.Add(this.label7);
+            this.ManulModePanel.Controls.Add(this.TimerVTrackBar);
+            this.ManulModePanel.Controls.Add(this.label6);
+            this.ManulModePanel.Location = new System.Drawing.Point(780, 184);
+            this.ManulModePanel.Name = "ManulModePanel";
+            this.ManulModePanel.Size = new System.Drawing.Size(350, 175);
+            this.ManulModePanel.TabIndex = 20;
+            this.ManulModePanel.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(32, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 20);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Timer";
+            // 
+            // TimerVTrackBar
+            // 
+            this.TimerVTrackBar.Location = new System.Drawing.Point(36, 43);
+            this.TimerVTrackBar.Maximum = 10;
+            this.TimerVTrackBar.Name = "TimerVTrackBar";
+            this.TimerVTrackBar.Size = new System.Drawing.Size(48, 114);
+            this.TimerVTrackBar.TabIndex = 1;
+            this.TimerVTrackBar.TrackColor = System.Drawing.Color.DimGray;
+            this.TimerVTrackBar.TrackHoverColor = System.Drawing.Color.Gray;
+            this.TimerVTrackBar.TrackIdleColor = System.Drawing.Color.Silver;
+            this.TimerVTrackBar.TrackPressedColor = System.Drawing.Color.Black;
+            this.TimerVTrackBar.Value = 10;
+            this.TimerVTrackBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TimerVTrackBar_Scroll);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(235, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 20);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "Water Level";
+            // 
+            // WaterLevelVTrackBar
+            // 
+            this.WaterLevelVTrackBar.Location = new System.Drawing.Point(252, 43);
+            this.WaterLevelVTrackBar.Maximum = 11;
+            this.WaterLevelVTrackBar.Minimum = 1;
+            this.WaterLevelVTrackBar.Name = "WaterLevelVTrackBar";
+            this.WaterLevelVTrackBar.Size = new System.Drawing.Size(48, 114);
+            this.WaterLevelVTrackBar.TabIndex = 1;
+            this.WaterLevelVTrackBar.TrackColor = System.Drawing.Color.DimGray;
+            this.WaterLevelVTrackBar.TrackHoverColor = System.Drawing.Color.Gray;
+            this.WaterLevelVTrackBar.TrackIdleColor = System.Drawing.Color.Silver;
+            this.WaterLevelVTrackBar.TrackPressedColor = System.Drawing.Color.Black;
+            this.WaterLevelVTrackBar.Value = 11;
+            this.WaterLevelVTrackBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.WaterLevelVTrackBar_Scroll);
+            // 
+            // StartBtn
+            // 
+            this.StartBtn.AnimationHoverSpeed = 0.07F;
+            this.StartBtn.AnimationSpeed = 0.03F;
+            this.StartBtn.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.StartBtn.BorderColor = System.Drawing.Color.Black;
+            this.StartBtn.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.StartBtn.FocusedColor = System.Drawing.Color.Empty;
+            this.StartBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.StartBtn.ForeColor = System.Drawing.Color.White;
+            this.StartBtn.Image = null;
+            this.StartBtn.ImageSize = new System.Drawing.Size(52, 52);
+            this.StartBtn.Location = new System.Drawing.Point(134, 60);
+            this.StartBtn.Name = "StartBtn";
+            this.StartBtn.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.StartBtn.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.StartBtn.OnHoverForeColor = System.Drawing.Color.White;
+            this.StartBtn.OnHoverImage = null;
+            this.StartBtn.OnPressedColor = System.Drawing.Color.Black;
+            this.StartBtn.Size = new System.Drawing.Size(68, 68);
+            this.StartBtn.TabIndex = 2;
+            this.StartBtn.Text = "Start";
+            this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
+            // 
+            // tboxReceive
+            // 
+            this.tboxReceive.Location = new System.Drawing.Point(26, 69);
+            this.tboxReceive.Multiline = true;
+            this.tboxReceive.Name = "tboxReceive";
+            this.tboxReceive.Size = new System.Drawing.Size(272, 107);
+            this.tboxReceive.TabIndex = 17;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1141, 664);
+            this.Controls.Add(this.ManulModePanel);
+            this.Controls.Add(this.WaterLevel);
+            this.Controls.Add(this.WaterLevelProgress);
             this.Controls.Add(this.tboxReceive);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -253,8 +376,11 @@ namespace Washing_machine
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            this.ManulModePanel.ResumeLayout(false);
+            this.ManulModePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,8 +404,16 @@ namespace Washing_machine
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel WashingStartLED;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tboxReceive;
         private System.IO.Ports.SerialPort sp;
+        private Guna.UI.WinForms.GunaVProgressBar WaterLevelProgress;
+        private System.Windows.Forms.Label WaterLevel;
+        private System.Windows.Forms.Panel ManulModePanel;
+        private System.Windows.Forms.Label label6;
+        private Guna.UI.WinForms.GunaVTrackBar TimerVTrackBar;
+        private Guna.UI.WinForms.GunaCircleButton StartBtn;
+        private Guna.UI.WinForms.GunaVTrackBar WaterLevelVTrackBar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tboxReceive;
     }
 }
 

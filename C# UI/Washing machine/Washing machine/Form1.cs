@@ -12,7 +12,7 @@ namespace Washing_machine
         {
             InitializeComponent();
             sp.BaudRate = 9600;
-            sp.PortName = "COM11";
+            sp.PortName = "COM16";
             sp.Open();
         }
 
@@ -110,11 +110,15 @@ namespace Washing_machine
             {
                 isManualMode = false;
                 ManualModeLED.BackColor = Color.FromArgb(220, 255, 220);
+                sp.WriteLine("AutoMode:0");
+                ManulModePanel.Visible = false;
             }
             else
             {
                 isManualMode = true;
                 ManualModeLED.BackColor = Color.Green;
+                sp.WriteLine("ManualMode:0");
+                ManulModePanel.Visible = true;
             }
         }
 
@@ -124,11 +128,13 @@ namespace Washing_machine
             {
                 isActiveWaterPump = false;
                 WaterPumpLED.BackColor = Color.FromArgb(220, 255, 220);
+                sp.WriteLine("WaterPump:0");
             }
             else
             {
                 isActiveWaterPump = true;
                 WaterPumpLED.BackColor = Color.Green;
+                sp.WriteLine("WaterPump:1");
             }
         }
 
@@ -140,11 +146,13 @@ namespace Washing_machine
             {
                 isActiveWashingMotor = false;
                 WashingMotorLED.BackColor = Color.FromArgb(220, 255, 220);
+                sp.WriteLine("WashingMotor:0");
             }
             else
             {
                 isActiveWashingMotor = true;
                 WashingMotorLED.BackColor = Color.Green;
+                sp.WriteLine("WashingMotor:1");
             }
         }
 
@@ -191,17 +199,8 @@ namespace Washing_machine
                         string value = receivedMsg.Substring(colonIndex + 1);
 
                         // Uncomment the lines below if you want to print the values to the console
-                        // Console.WriteLine(receivedMsg);
                         Console.WriteLine("Key: " + key);
                         Console.WriteLine("Value: " + value);
-
-
-                        //if (key != "W")
-                        //{
-                            
-                        //    //isActiveWaterPump = false;
-                        //    //WaterPumpLED.BackColor = Color.FromArgb(220, 255, 220);
-                        //}
 
 
                         if (key == "T")
@@ -223,12 +222,11 @@ namespace Washing_machine
                             if (int.TryParse(value, out int number))
                             {
                                 axWindowsMediaPlayer1.Ctlcontrols.currentPosition = number;
+                                WaterLevelProgress.Value = number;
                                 axWindowsMediaPlayer1.Ctlcontrols.play();
                                 axWindowsMediaPlayer1.Ctlcontrols.pause();
 
                                 WaterPumpCheckBox.Checked = true;
-                                //isActiveWaterPump = true;
-                                //WaterPumpLED.BackColor = Color.Green;
                             }
                             else
                             {
@@ -245,9 +243,16 @@ namespace Washing_machine
                             WashingMotorCheckBox.Checked = true;
                             WaterPumpCheckBox.Checked = false;
 
-                            //WashingCompleteLED.BackColor = Color.Green;
-                            //WashingStartLED.BackColor = Color.FromArgb(220, 255, 220);
+                            if (int.TryParse(value, out int number))
+                            {
+                                axWindowsMediaPlayer1.Ctlcontrols.currentPosition = number;
+                                axWindowsMediaPlayer1.Ctlcontrols.play();
 
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid Number Format");
+                            }
                         }
 
 
@@ -261,77 +266,22 @@ namespace Washing_machine
                             WashingMotorCheckBox.Checked = false;
                             WashingStartLED.BackColor = Color.FromArgb(220, 255, 220);
                             WashingCompleteLED.BackColor = Color.Green;
-
+                            WaterLevelProgress.Value = 1;
+                        }
+                        else if (key == "Reset")
+                        {
+                            WaterLevelProgress.Value = 1;
+                            WaterPumpCheckBox.Checked = false;
+                            WashingMotorCheckBox.Checked = false;
+                            WashingCompleteLED.BackColor = Color.FromArgb(220, 255, 220);
+                            WashingStartLED.BackColor = Color.FromArgb(220, 255, 220);
                         }
 
-                        //if (key != "W")
-                        //{
-                        //    WaterPumpCheckBox.Checked = false;
-                        //    isActiveWaterPump = false;
-                        //    WaterPumpLED.BackColor = Color.FromArgb(220, 255, 220);
-                        //}
-
-                        //if (key == "W")
-                        //{
-                        //    if (int.TryParse(value, out int number))
-                        //    {
-                        //        axWindowsMediaPlayer1.Ctlcontrols.currentPosition = number;
-                        //        axWindowsMediaPlayer1.Ctlcontrols.play();
-                        //        axWindowsMediaPlayer1.Ctlcontrols.pause();
-
-                        //        WaterPumpCheckBox.Checked = true;
-                        //        isActiveWaterPump = true;
-                        //        WaterPumpLED.BackColor = Color.Green;
-                        //    }
-                        //    else
-                        //    {
-                        //        Console.WriteLine("Invalid Number Format");
-                        //    }
-                        //}
-                        //else if (key == "B")
-                        //{
-
-
-                        //}
-                        //else if(key == "Button")
-                        //{
-                        //    isWashingStart = true;
-                        //    WashingStartLED.BackColor = Color.Green;
-                        //}
                     }
                 }
 
                 tboxReceive.Text = indata;
-                //tboxReceive.ScrollToCaret();
-
-
-                ////Console.WriteLine(indata);
-                //char firstchar;
-                ////Single numdata;
-                ////Single volts;
-                //firstchar = indata[0];
-
-                //Console.WriteLine(indata.Substring(1));
-
-                //switch (firstchar)
-                //{
-                //    case 'A':
-                //        numdata = Convert.ToSingle(indata.Substring(1));
-                //        volts = numdata * 5 / 1024;
-                //        //progressBar1.Value = Convert.ToInt16(indata.Substring(1));
-                //        break;
-
-                //    case 'V':
-                //        if (indata.Substring(1) == "on")
-                //        {
-                //            //panel6.BackColor = panel7.BackColor = panel8.BackColor = Color.Yellow;
-                //        }
-                //        else
-                //        {
-                //            //panel6.BackColor = panel7.BackColor = panel8.BackColor = Color.Black;
-                //        }
-                //        break;
-                //}
+             
             }
             catch (Exception e)
             {
@@ -339,5 +289,28 @@ namespace Washing_machine
             }
         }
 
+        private void TimerVTrackBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (ManualModeCheckBox.Checked)
+            {
+                sp.Write("Timer:");
+                sp.WriteLine((TimerVTrackBar.Value).ToString());
+            }
+        }
+
+        private void WaterLevelVTrackBar_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (ManualModeCheckBox.Checked)
+            {
+                sp.Write("WaterLevevl:");
+                sp.WriteLine((WaterLevelVTrackBar.Value).ToString());
+            }
+        }
+
+        private void StartBtn_Click(object sender, EventArgs e)
+        {
+            sp.Write("Start:");
+            sp.WriteLine("1");
+        }
     }
 }
