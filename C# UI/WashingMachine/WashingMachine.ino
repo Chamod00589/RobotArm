@@ -25,45 +25,49 @@ bool isActiveWaterPump = false;
 bool isActiveWashingMotor = false;
 bool isWashingStart = false;
 int TimerPercentage = 10;
+bool isCompleteWashing = false;
 
 void loop() {
+  if (!isCompleteWashing) {
 
-  // Read the state of the button (LOW when pressed, HIGH when not pressed)
-  buttonState = digitalRead(buttonPin);
+    // Read the state of the button (LOW when pressed, HIGH when not pressed)
+    buttonState = digitalRead(buttonPin);
+    // Serial.println(digitalRead(buttonPin));
+    // Serial.println(digitalRead(buttonPin));
+    // Check if the button is pressed
+    if (buttonState == HIGH) {
+      isWashingStart = true;
+      Serial.println("WashingMotorStart:0");
+      // delay(2000);
+    }
 
-  // Check if the button is pressed
-  if (buttonState == LOW) {
-    isWashingStart = true;
-    Serial.println("WashingMotorStart:0");
-  }
+    if (!isWashingStart) {
+      int Timer = analogRead(TimerPin);
+      TimerPercentage = map(Timer, 0, 1023, 0, 10);
+      Serial.print("T:");
+      Serial.println(TimerPercentage * 10);
+    } else {
+      int WaterLevel = analogRead(WaterLevelPin);
+      int WaterLevelPercentage = map(WaterLevel, 0, 1023, 1, 11);
+      Serial.print("W:");
+      Serial.println(WaterLevelPercentage);
+      delay(500);
 
-  if (!isWashingStart) {
-    int Timer = analogRead(TimerPin);
-    TimerPercentage = map(Timer, 0, 1023, 0, 10);
-    Serial.print("T:");
-    Serial.println(TimerPercentage);
-  } else {
-    int WaterLevel = analogRead(WaterLevelPin);
-    int WaterLevelPercentage = map(WaterLevel, 0, 1023, 1, 11);
-    Serial.print("W:");
-    Serial.println(WaterLevelPercentage);
+      if (WaterLevelPercentage == 11) {
+        Serial.print("Washing:");
+        Serial.println(TimerPercentage);
+        // delay(1000 * TimerPercentage);
 
-
-    if (WaterLevelPercentage == 11) {
-      Serial.print("Washing:");
-      Serial.println(TimerPercentage);
-      delay(1000 * TimerPercentage);
-
-      // for (int i = TimerPercentage; 0 < i; i--) {
-      //   Serial.print("Washing:");
-      //   Serial.println(i);
-      //   delay(1000);
-      // }
-      Serial.println("WashingComplete:0");
+        for (int i = TimerPercentage; 0 <= i; i--) {
+          Serial.print("T:");
+          Serial.println(i * 10);
+          delay(1000);
+        }
+        Serial.println("WashingComplete:0");
+        isCompleteWashing = true;
+      }
     }
   }
-
-
 
 
   // for (int i = 1; i <= 11; i++) {

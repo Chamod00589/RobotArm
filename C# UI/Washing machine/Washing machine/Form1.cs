@@ -12,7 +12,7 @@ namespace Washing_machine
         {
             InitializeComponent();
             sp.BaudRate = 9600;
-            sp.PortName = "COM12";
+            sp.PortName = "COM11";
             sp.Open();
         }
 
@@ -106,7 +106,7 @@ namespace Washing_machine
 
         private void ManualModeCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (isManualMode)
+            if (!ManualModeCheckBox.Checked)
             {
                 isManualMode = false;
                 ManualModeLED.BackColor = Color.FromArgb(220, 255, 220);
@@ -120,7 +120,7 @@ namespace Washing_machine
 
         private void WaterPumpCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (isActiveWaterPump)
+            if (!WaterPumpCheckBox.Checked)
             {
                 isActiveWaterPump = false;
                 WaterPumpLED.BackColor = Color.FromArgb(220, 255, 220);
@@ -136,7 +136,7 @@ namespace Washing_machine
 
         private void WashingMotorCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (isActiveWashingMotor)
+            if (!WashingMotorCheckBox.Checked)
             {
                 isActiveWashingMotor = false;
                 WashingMotorLED.BackColor = Color.FromArgb(220, 255, 220);
@@ -216,11 +216,7 @@ namespace Washing_machine
                             }
                         }
 
-                        else if (key == "WashingMotorStart")
-                        {
-                            WaterPumpCheckBox.Checked = true;
-                            WashingStartLED.BackColor = Color.Green;
-                        }
+                     
 
                         else if (key == "W")
                         {
@@ -249,13 +245,24 @@ namespace Washing_machine
                             WashingMotorCheckBox.Checked = true;
                             WaterPumpCheckBox.Checked = false;
 
-                            WashingCompleteLED.BackColor = Color.Green;
-                            WashingStartLED.BackColor = Color.FromArgb(220, 255, 220);
+                            //WashingCompleteLED.BackColor = Color.Green;
+                            //WashingStartLED.BackColor = Color.FromArgb(220, 255, 220);
 
                         }
 
 
+                        else if (key == "WashingMotorStart")
+                        {
+                            WaterPumpCheckBox.Checked = true;
+                            WashingStartLED.BackColor = Color.Green;
+                        }
+                        else if (key == "WashingComplete")
+                        {
+                            WashingMotorCheckBox.Checked = false;
+                            WashingStartLED.BackColor = Color.FromArgb(220, 255, 220);
+                            WashingCompleteLED.BackColor = Color.Green;
 
+                        }
 
                         //if (key != "W")
                         //{
@@ -294,8 +301,8 @@ namespace Washing_machine
                     }
                 }
 
-                tboxReceive.Text += indata;
-                tboxReceive.ScrollToCaret();
+                tboxReceive.Text = indata;
+                //tboxReceive.ScrollToCaret();
 
 
                 ////Console.WriteLine(indata);
